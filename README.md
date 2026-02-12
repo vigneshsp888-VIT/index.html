@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sivapriya.S - Python Developer & AI Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-navy: #1a2332;
+            --rich-blue: #2c4a6b;
+            --accent-gold: #c9a868;
+            --soft-cream: #faf8f5;
+            --pure-white: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --border-subtle: #e2e8f0;
+            --shadow-sm: rgba(0, 0, 0, 0.04);
+            --shadow-md: rgba(0, 0, 0, 0.08);
+            --shadow-lg: rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--soft-cream);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--pure-white);
+            box-shadow: 0 0 60px var(--shadow-md);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--rich-blue) 100%);
+            color: var(--pure-white);
+            padding: 4rem 3rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            animation: slideDown 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .title-line {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .profession {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        .degree {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item::before {
+            content: '▸';
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 3.5rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.3s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.5s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.7s; }
+        section:nth-child(6) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-navy);
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent-gold);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--rich-blue);
+        }
+
+        /* Summary Section */
+        .summary-box {
+            background: linear-gradient(135deg, rgba(44, 74, 107, 0.03) 0%, rgba(201, 168, 104, 0.03) 100%);
+            padding: 2rem;
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 8px 8px 0;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            box-shadow: 0 2px 8px var(--shadow-sm);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--border-subtle);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            border-left-color: var(--accent-gold);
+            transform: translateX(5px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0.5rem;
+            width: 13px;
+            height: 13px;
+            background: var(--pure-white);
+            border: 3px solid var(--rich-blue);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover::before {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            transform: scale(1.3);
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .company {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .duration {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .job-description {
+            margin-top: 1rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .projects {
+            background: rgba(44, 74, 107, 0.04);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .projects strong {
+            color: var(--rich-blue);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--soft-cream);
+            padding: 1.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-md);
+            border-color: var(--accent-gold);
+        }
+
+        .skill-category h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--rich-blue);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .skill-category p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Education & Certification */
+        .edu-cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .edu-item, .cert-item {
+            padding: 1.5rem;
+            background: var(--soft-cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .edu-item:hover, .cert-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px var(--shadow-md);
+        }
+
+        .edu-item h4, .cert-item h4 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--deep-navy);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .edu-item p, .cert-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .gpa {
+            display: inline-block;
+            background: var(--rich-blue);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* Achievements */
+        .achievement-item {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(201, 168, 104, 0.05) 0%, transparent 100%);
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(8px);
+            background: linear-gradient(135deg, rgba(201, 168, 104, 0.08) 0%, transparent 100%);
+        }
+
+        .achievement-item::before {
+            content: '★';
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1s forwards;
+        }
+
+        .btn {
+            padding: 1rem 1.75rem;
+            border: none;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: var(--deep-navy);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--rich-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--accent-gold);
+            color: var(--deep-navy);
+        }
+
+        .btn-secondary:hover {
+            background: #d4b579;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201, 168, 104, 0.3);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .main-container {
+                box-shadow: none;
+            }
+            .action-buttons {
+                display: none;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            header, .content {
+                padding: 2rem 1.5rem;
+            }
+            .edu-cert-grid {
+                grid-template-columns: 1fr;
+            }
+            .action-buttons {
+                flex-direction: column;
+                bottom: 1rem;
+                right: 1rem;
+            }
+            .btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div class="header-content">
+                <h1>Sivapriya.S</h1>
+                <div class="title-line">
+                    <span class="profession">Python Developer & AI Specialist</span>
+                    <span class="degree">B.E (ECE)</span>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-item">sivapriya.eashan@gmail.com</div>
+                    <div class="contact-item">+91 8248792506</div>
+                    <div class="contact-item">Tamil Nadu, India</div>
+                    <div class="contact-item">6+ Years Experience</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section>
+                <h2>Professional Summary</h2>
+                <div class="summary-box">
+                    Accomplished Python Developer and AI Specialist with 6+ years of experience in software development, artificial intelligence, and machine learning. Proven expertise in designing and implementing AI-powered solutions, blockchain frameworks, and secure data systems. Certified Python programmer with a strong track record in developing scalable applications using deep learning frameworks, database management, and cloud technologies. Passionate about leveraging cutting-edge technology to solve complex problems in healthcare, energy management, and biometric security.
+                </div>
+            </section>
+
+            <section>
+                <h2>Technical Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming & Development</h4>
+                        <p>Python, PHP, HTML, CSS, JavaScript, PL/SQL, MATLAB</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>AI & Machine Learning</h4>
+                        <p>TensorFlow, PyTorch, Scikit-learn, NumPy, Pandas, Deep Learning, Neural Networks</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Database Management</h4>
+                        <p>MySQL, Oracle, SQLite3, Database Design, SQL Queries, Stored Procedures</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frameworks & Libraries</h4>
+                        <p>Tkinter, Matplotlib, SciPy, PIL, openpyxl, cx_Oracle, Blockchain, Hyperledger</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Cloud & Tools</h4>
+                        <p>AWS Cloud Platform, PyCharm, Git, Windows 7/8/10</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Testing & Quality</h4>
+                        <p>Automated Testing, PCB Testing, In-Circuit Testing, AOI, Quality Assurance</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <h3>Python Programmer</h3>
+                    <div class="company">HIGS Software Solution</div>
+                    <div class="duration">April 2021 - Present</div>
+                    <div class="projects">
+                        <strong>Projects:</strong> Gene Expression Data Analysis, Credit Card Fraud Detection, Smart Energy Management, Secure Healthcare Data Transfer, Blockchain-based Data Transmission, AI-Powered Drainage Management System
+                    </div>
+                    <div class="job-description">
+                        • Developed AI/ML frameworks for cancer disease detection through gene expression data analysis, achieving high accuracy in classification using deep learning models<br><br>
+                        • Designed and implemented blockchain-based distributed Hyperledger framework for secure healthcare data transmission with cryptography, user authentication, and privacy preservation<br><br>
+                        • Built fraud detection systems for credit card transactions using machine learning algorithms and anomaly detection techniques<br><br>
+                        • Created comprehensive GUI applications using Python Tkinter for executing AI-powered systems, ensuring user-friendly interfaces for complex analytical tasks<br><br>
+                        • Processed and validated large datasets using Pandas, NumPy, and Scikit-learn for machine learning model training and evaluation<br><br>
+                        • Developed smart energy management and drainage management systems powered by AI and IoT devices<br><br>
+                        • Implemented data pipelines for processing CSV files with integrity validation and cleansing procedures<br><br>
+                        • Utilized TensorFlow and PyTorch for building and training deep neural networks for image and data classification tasks
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Technical Research Analyst</h3>
+                    <div class="company">HIGS Software Solution</div>
+                    <div class="duration">April 2021 - April 2022</div>
+                    <div class="projects">
+                        <strong>Project:</strong> Biometric Template Protection
+                    </div>
+                    <div class="job-description">
+                        • Conducted advanced research on biometric security and template protection mechanisms<br><br>
+                        • Analyzed emerging trends in information technology and cybersecurity, generating innovative solutions for data protection<br><br>
+                        • Developed mathematical models and simulations using Python and MATLAB for biometric authentication systems<br><br>
+                        • Implemented survey methodologies and assessments to establish research objectives and validate findings<br><br>
+                        • Created analytical programming solutions to address complex security challenges in biometric systems<br><br>
+                        • Extended research portfolio through identification of new research areas and development of novel methodologies
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Software Developer (Trainee)</h3>
+                    <div class="company">Dhina Technologies</div>
+                    <div class="duration">October 2020 - March 2021</div>
+                    <div class="job-description">
+                        • Designed and developed custom websites using HTML, CSS, PHP, and MySQL database<br><br>
+                        • Created responsive web interfaces with clean, efficient code following industry best practices<br><br>
+                        • Performed database administration and design for web applications<br><br>
+                        • Collaborated with development team on software design and implementation projects<br><br>
+                        • Produced well-documented code based on technical specifications
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Visualizing Operator</h3>
+                    <div class="company">HK CoolTech</div>
+                    <div class="duration">January 2020 - September 2020</div>
+                    <div class="job-description">
+                        • Reviewed and analyzed product specifications for printed circuit boards (PCB)<br><br>
+                        • Contributed to test plan development and documented comprehensive test cases<br><br>
+                        • Reported defects and collaborated with cross-functional teams to ensure quality standards<br><br>
+                        • Performed quality assurance testing on PCB assemblies
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Testing and Visualizing Operator</h3>
+                    <div class="company">Syrma Technology</div>
+                    <div class="duration">August 2017 - June 2018</div>
+                    <div class="job-description">
+                        • Performed automated and manual testing for PCB design and functionality verification<br><br>
+                        • Analyzed test results and proposed process improvements for enhanced quality and reliability<br><br>
+                        • Conducted visual inspections to detect burnt components and manufacturing defects<br><br>
+                        • Tracked defects and inconsistencies, providing timely solutions and documentation<br><br>
+                        • Utilized in-circuit testing and automated optical inspection tools
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Education & Certification</h2>
+                <div class="edu-cert-grid">
+                    <div>
+                        <div class="edu-item">
+                            <h4>Bachelor of Engineering (ECE)</h4>
+                            <p>Electronics and Communication Engineering</p>
+                            <span class="gpa">GPA: 8.08/10</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cert-item">
+                            <h4>Certified Entry Level Python Programmer</h4>
+                            <p>PCEP Certification</p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="edu-item">
+                    <h4>Advanced Diploma in Python Programming (ADPP)</h4>
+                    <p>Specialized training in advanced Python development and AI/ML frameworks</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Academic Project</h2>
+                <div class="projects">
+                    <strong>Visual-Attention Based Background Modeling</strong> (MATLAB)<br>
+                    Developed an intelligent system for detecting frequently and infrequently moving objects using visual attention algorithms and background modeling techniques. Implemented computer vision algorithms for real-time object detection and tracking.
+                </div>
+            </section>
+
+            <section>
+                <h2>Awards & Achievements</h2>
+                <div class="achievement-item">
+                    Best Paper Award on 'Brain Gate Technology' at National Level Technical Symposium, Arunachala College of Engineering for Women
+                </div>
+                <div class="achievement-item">
+                    First Prize on 'Brain Gate Technology' at National Level Technical Symposium, Udaya School of Engineering
+                </div>
+                <div class="achievement-item">
+                    Second Prize on 'Intelligent Vision' at National Level Technical Symposium, Udaya School of Engineering
+                </div>
+                <div class="achievement-item">
+                    Best Presentation Award on 'Raspberry-pi Based Assistive Device for Blind, Deaf and Dumb People' at Arunachala College of Engineering for Women
+                </div>
+                <div class="achievement-item">
+                    First Prize on 'Smart Attendance Using Real-Time Face Recognition' at e-spart, Rohini College of Engineering and Technology
+                </div>
+            </section>
+
+            <section>
+                <h2>Industrial Training & Visits</h2>
+                <div class="job-description">
+                    • Visited Koodankulam Nuclear Power Plant, India - Gained insights into advanced power generation systems<br><br>
+                    • Attended Industrial Training at KELTRON Equipment Complex, India - Hands-on experience with electronic equipment manufacturing
+                </div>
+            </section>
+
+            <section>
+                <h2>Conference Presentations</h2>
+                <div class="job-description">
+                    • Presented 'Intelligent Vision' at National Level Conference, Rohini College of Engineering and Technology<br><br>
+                    • Presented 'Brain Fingerprinting' at National Level Technical Symposium, CSI Institute of Technology<br><br>
+                    • Presented 'Augmented Reality' at National Level Technical Symposium, Stella Mary's College of Engineering<br><br>
+                    • Presented 'Streetlight Glow on Detecting Vehicle Movement Using Sensor' at Inter College Technical Symposium, University College of Engineering<br><br>
+                    • Attended seminar on 'Nanotechnology' at Arunachala College of Engineering for Women
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="action-buttons">
+        <button class="btn btn-secondary" onclick="downloadResume()">Download PDF</button>
+        <button class="btn btn-primary" onclick="window.print()">Print Resume</button>
+    </div>
+
+    <script>
+        function downloadResume() {
+            window.print();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add active section highlighting on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const scrollPos = window.scrollY + 200;
+
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                
+                if (scrollPos >= top && scrollPos < top + height) {
+                    section.style.transform = 'scale(1.01)';
+                    section.style.transition = 'transform 0.3s ease';
+                } else {
+                    section.style.transform = 'scale(1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
